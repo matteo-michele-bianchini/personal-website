@@ -1,128 +1,445 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="it">
 <head>
-    <meta charset="UTF-8" />
-    <title>Dark Particle Field</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Impresa Artigiana Informatica di Matteo Michele Bianchini - Sviluppo software full-stack, consulenza IT e architetture scalabili. 10+ anni di esperienza con clienti enterprise.">
+    <meta name="keywords" content="sviluppo software, full-stack developer, React, Node.js, TypeScript, .NET, C#, consulenza IT, Milano">
+    <meta name="author" content="Matteo Michele Bianchini">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Impresa Artigiana Informatica - Sviluppo Software Full-Stack">
+    <meta property="og:description" content="Soluzioni software su misura per aziende. 10+ anni di esperienza, progetti enterprise con Poste Italiane, Lavazza, Leroy Merlin e altri.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <title>Impresa Artigiana Informatica di Matteo Michele Bianchini | Sviluppo Software Full-Stack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#3b82f6',
+                        accent: '#60a5fa'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            background: #050508;
-            overflow: hidden;
-            height: 100%;
-        }
-
-        canvas {
-            display: block;
-        }
-
-        .hint {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: system-ui, sans-serif;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.25);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            pointer-events: none;
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-bold text-primary">IAI</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="text-gray-600 hover:text-primary transition-colors">Chi Sono</a>
+                        <a href="#servizi" class="text-gray-600 hover:text-primary transition-colors">Servizi</a>
+                        <a href="#tech" class="text-gray-600 hover:text-primary transition-colors">Tecnologie</a>
+                        <a href="#portfolio" class="text-gray-600 hover:text-primary transition-colors">Portfolio</a>
+                        <a href="#contatti" class="text-gray-600 hover:text-primary transition-colors">Contatti</a>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#about" class="block text-gray-600 hover:text-primary">Chi Sono</a>
+                <a href="#servizi" class="block text-gray-600 hover:text-primary">Servizi</a>
+                <a href="#tech" class="block text-gray-600 hover:text-primary">Tecnologie</a>
+                <a href="#portfolio" class="block text-gray-600 hover:text-primary">Portfolio</a>
+                <a href="#contatti" class="block text-gray-600 hover:text-primary">Contatti</a>
+            </div>
+        </div>
+    </nav>
 
-<body>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent text-white pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                Soluzioni Software<br>
+                <span class="text-blue-200">Su Misura</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                Sviluppo full-stack professionale per trasformare le tue idee in prodotti digitali scalabili e performanti
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contatti" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                    Inizia un Progetto
+                </a>
+                <a href="#portfolio" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+                    Scopri i Progetti
+                </a>
+            </div>
+            <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl font-bold">10+</div>
+                    <div class="text-blue-200 text-sm">Anni di Esperienza</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold">15+</div>
+                    <div class="text-blue-200 text-sm">Clienti Enterprise</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold">50+</div>
+                    <div class="text-blue-200 text-sm">Progetti Completati</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold">100%</div>
+                    <div class="text-blue-200 text-sm">Clienti Soddisfatti</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <canvas id="canvas"></canvas>
-    <div class="hint">Matteo Michele Bianchini Engineering</div>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Chi Sono</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Sono <strong>Matteo Michele Bianchini</strong>, sviluppatore software full-stack con un background unico che combina
+                        <strong>meccatronica e informatica</strong>. Questa doppia competenza mi permette di affrontare problemi complessi
+                        con una visione sistemica e orientata ai risultati.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Con oltre <strong>10 anni di esperienza</strong> nel settore, ho collaborato con startup innovative e grandi
+                        aziende enterprise, sviluppando soluzioni software che hanno generato valore reale per i miei clienti.
+                    </p>
+                    <p class="text-lg text-gray-600">
+                        La mia esperienza in contesti startup mi ha insegnato l'importanza dell'agilità, della rapidità di esecuzione
+                        e dell'attenzione costante alle esigenze del business.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-6">Il Mio Approccio</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-blue-200 mt-1"></i>
+                            <span>Analisi approfondita delle esigenze di business</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-blue-200 mt-1"></i>
+                            <span>Architetture scalabili e manutenibili</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-blue-200 mt-1"></i>
+                            <span>Codice pulito e ben documentato</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-blue-200 mt-1"></i>
+                            <span>Comunicazione trasparente e costante</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-blue-200 mt-1"></i>
+                            <span>Rispetto delle deadline e del budget</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Servizi Section -->
+    <section id="servizi" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Servizi</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Offro soluzioni complete per lo sviluppo software, dalla consulenza iniziale al deployment in produzione
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Sviluppo Full-Stack</h3>
+                    <p class="text-gray-600 mb-4">
+                        Sviluppo applicazioni web e mobile complete, dal frontend all'infrastruttura backend,
+                        utilizzando le tecnologie più moderne e performanti.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>Web Application</li>
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>REST & GraphQL API</li>
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>Microservizi</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Consulenza IT</h3>
+                    <p class="text-gray-600 mb-4">
+                        Supporto strategico per le decisioni tecnologiche della tua azienda,
+                        dalla scelta dello stack alla definizione dell'architettura.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>Technology Assessment</li>
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>Code Review</li>
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>Team Mentoring</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Architetture Scalabili</h3>
+                    <p class="text-gray-600 mb-4">
+                        Progettazione e implementazione di sistemi distribuiti capaci di crescere
+                        con il tuo business, garantendo performance e affidabilità.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>Cloud Architecture</li>
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>DevOps & CI/CD</li>
+                        <li><i class="fas fa-chevron-right text-secondary mr-2"></i>Container Orchestration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Tech Stack</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Tecnologie moderne e consolidate per costruire soluzioni robuste e performanti
+                </p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                <!-- React -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fab fa-react text-4xl text-[#61DAFB] mb-3"></i>
+                    <div class="font-semibold text-gray-700">React</div>
+                </div>
+                <!-- Node.js -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fab fa-node-js text-4xl text-[#339933] mb-3"></i>
+                    <div class="font-semibold text-gray-700">Node.js</div>
+                </div>
+                <!-- TypeScript -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fas fa-code text-4xl text-[#3178C6] mb-3"></i>
+                    <div class="font-semibold text-gray-700">TypeScript</div>
+                </div>
+                <!-- .NET -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fab fa-microsoft text-4xl text-[#512BD4] mb-3"></i>
+                    <div class="font-semibold text-gray-700">.NET</div>
+                </div>
+                <!-- C# -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fas fa-hashtag text-4xl text-[#239120] mb-3"></i>
+                    <div class="font-semibold text-gray-700">C#</div>
+                </div>
+                <!-- PostgreSQL -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fas fa-database text-4xl text-[#336791] mb-3"></i>
+                    <div class="font-semibold text-gray-700">PostgreSQL</div>
+                </div>
+                <!-- MongoDB -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fas fa-leaf text-4xl text-[#47A248] mb-3"></i>
+                    <div class="font-semibold text-gray-700">MongoDB</div>
+                </div>
+                <!-- GraphQL -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fas fa-project-diagram text-4xl text-[#E10098] mb-3"></i>
+                    <div class="font-semibold text-gray-700">GraphQL</div>
+                </div>
+                <!-- Docker -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fab fa-docker text-4xl text-[#2496ED] mb-3"></i>
+                    <div class="font-semibold text-gray-700">Docker</div>
+                </div>
+                <!-- Kubernetes -->
+                <div class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+                    <i class="fas fa-dharmachakra text-4xl text-[#326CE5] mb-3"></i>
+                    <div class="font-semibold text-gray-700">Kubernetes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Portfolio</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Ho collaborato con aziende leader in diversi settori, sviluppando soluzioni su misura per le loro esigenze
+                </p>
+            </div>
+
+            <!-- Clienti -->
+            <div class="mb-16">
+                <h3 class="text-xl font-semibold text-gray-700 text-center mb-8">Alcuni dei clienti con cui ho collaborato</h3>
+                <div class="flex flex-wrap justify-center gap-8 items-center opacity-70">
+                    <span class="text-lg font-medium text-gray-600">Poste Italiane</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">Lavazza</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">Leroy Merlin</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">Assicurazioni Generali</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">Zucchetti</span>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8 items-center opacity-70 mt-4">
+                    <span class="text-lg font-medium text-gray-600">Goglio</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">Arup</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">Mia-Platform</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">Beta 80</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">RTM Breda</span>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8 items-center opacity-70 mt-4">
+                    <span class="text-lg font-medium text-gray-600">Voidless</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">RareEarth</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">NewtonThrust</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-lg font-medium text-gray-600">YunoAI</span>
+                </div>
+            </div>
+
+            <!-- Settori -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-shopping-cart text-xl text-green-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Retail</h4>
+                    <p class="text-gray-600 text-sm">
+                        E-commerce, sistemi di inventory management, soluzioni omnichannel per la grande distribuzione.
+                    </p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-xl text-blue-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Insurance</h4>
+                    <p class="text-gray-600 text-sm">
+                        Piattaforme di gestione polizze, portali clienti, sistemi di claim management.
+                    </p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-xl text-red-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">Healthcare</h4>
+                    <p class="text-gray-600 text-sm">
+                        Applicazioni per la gestione di dati sanitari, telemedicina, integrazione con sistemi ospedalieri.
+                    </p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-cloud text-xl text-purple-600"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-2">SaaS</h4>
+                    <p class="text-gray-600 text-sm">
+                        Piattaforme multi-tenant, sistemi di billing, dashboard analytics e monitoring.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contatti Section -->
+    <section id="contatti" class="py-20 bg-gradient-to-br from-primary via-secondary to-accent text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Iniziamo a Collaborare</h2>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                    Hai un progetto in mente? Contattami per discutere come posso aiutarti a realizzarlo
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <a href="mailto:matteo.michele.bianchini@gmail.com" class="bg-white/10 backdrop-blur-sm rounded-xl p-8 text-center hover:bg-white/20 transition-colors">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Email</h3>
+                    <p class="text-blue-100 text-sm break-all">matteo.michele.bianchini@gmail.com</p>
+                </a>
+                <a href="tel:+393780815788" class="bg-white/10 backdrop-blur-sm rounded-xl p-8 text-center hover:bg-white/20 transition-colors">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Telefono</h3>
+                    <p class="text-blue-100">+39 378 0815788</p>
+                </a>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 text-center">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Sede</h3>
+                    <p class="text-blue-100">Milano, Italia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-semibold text-white">Impresa Artigiana Informatica</p>
+                    <p class="text-sm">di Matteo Michele Bianchini</p>
+                    <p class="text-sm">P.IVA: 14501800966</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:matteo.michele.bianchini@gmail.com" class="hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="tel:+393780815788" class="hover:text-white transition-colors">
+                        <i class="fas fa-phone text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+                <p>&copy; 2024 Impresa Artigiana Informatica di Matteo Michele Bianchini. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
     <script>
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        let w, h, cx, cy;
-        let particles = [];
-        let mouse = { x: 0, y: 0 };
-
-        function resize() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            cx = w / 2;
-            cy = h / 2;
-        }
-        window.addEventListener("resize", resize);
-        resize();
-
-        window.addEventListener("mousemove", e => {
-            mouse.x = (e.clientX - cx) * 0.0005;
-            mouse.y = (e.clientY - cy) * 0.0005;
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.angle = Math.random() * Math.PI * 2;
-                this.radius = Math.random() * Math.min(w, h) * 0.45;
-                this.speed = 0.0003 + Math.random() * 0.0006;
-                this.size = 0.5 + Math.random() * 1.8;
-                this.hue = 200 + Math.random() * 80;
-                this.alpha = 0.15 + Math.random() * 0.35;
-                this.offset = Math.random() * 1000;
-            }
-
-            update(t) {
-                this.angle += this.speed;
-                const noise = Math.sin(t * 0.0004 + this.offset) * 40;
-
-                this.x = cx +
-                    Math.cos(this.angle + noise * 0.002 + mouse.x) *
-                    (this.radius + noise);
-
-                this.y = cy +
-                    Math.sin(this.angle + noise * 0.002 + mouse.y) *
-                    (this.radius + noise);
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `hsla(${this.hue}, 80%, 65%, ${this.alpha})`;
-                ctx.fill();
-            }
-        }
-
-        function createParticles(count = 600) {
-            particles = [];
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        createParticles();
-
-        function animate(t) {
-            ctx.fillStyle = "rgba(5,5,8,0.15)";
-            ctx.fillRect(0, 0, w, h);
-
-            ctx.globalCompositeOperation = "lighter";
-
-            for (const p of particles) {
-                p.update(t);
-                p.draw();
-            }
-
-            ctx.globalCompositeOperation = "source-over";
-            requestAnimationFrame(animate);
-        }
-
-        animate(0);
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
     </script>
-
 </body>
-
 </html>
