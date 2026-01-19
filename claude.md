@@ -1,7 +1,7 @@
 Crea una landing page HTML professionale per "Impresa Artigiana Informatica di Matteo Michele Bianchini" (P.IVA 14501800966).
 
 SERVIZI: Sviluppo software full-stack per clienti esterni
-TECH STACK: React, Node.js, TypeScript, PostgreSQL, MongoDB, GraphQL, Docker, Kubernetes
+TECH STACK: React, Node.js, TypeScript, .NET, C#, PostgreSQL, MongoDB, GraphQL, Docker, Kubernetes
 ESPERIENZA: 10+ anni combinati mechatronics + software, progetti enterprise (Poste Italiane, Lavazza, Leroy Merlin, Assicurazioni Generali, Zucchetti, Goglio, Arup, Mia-Platform, Beta 80, RTM Breda, Voidless, RareEarth, NewtonThrust, YunoAI)
 
 SEZIONI:
